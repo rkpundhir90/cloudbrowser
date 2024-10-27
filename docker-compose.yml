@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  browserless:
+    image: browserless/chrome
+    container_name: browserless-chrome
+    ports:
+      - "3000:3000"  # Map port 3000 on host to port 3000 in container
+    environment:
+      # Set any additional configuration as environment variables, such as max concurrency, timeout, etc.
+      # See browserless documentation for more options: https://docs.browserless.io/docs/docker.html
+      MAX_CONCURRENT_SESSIONS: 5
+      DEFAULT_LAUNCH_ARGS: >-
+        --no-sandbox
+        --disable-dev-shm-usage
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 50M
