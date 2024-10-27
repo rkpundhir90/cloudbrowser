@@ -41,7 +41,6 @@
     const webview = document.getElementById('webview');
     const urlInput = document.getElementById('urlInput');
 
-    // Load the URL from input
     document.getElementById('loadButton').addEventListener('click', () => {
       const url = urlInput.value;
       if (url) {
@@ -49,14 +48,12 @@
       }
     });
 
-    // Back navigation
     document.getElementById('backButton').addEventListener('click', () => {
       if (webview.canGoBack()) {
         webview.goBack();
       }
     });
 
-    // Forward navigation
     document.getElementById('forwardButton').addEventListener('click', () => {
       if (webview.canGoForward()) {
         webview.goForward();

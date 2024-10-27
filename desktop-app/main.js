@@ -7,25 +7,19 @@ function createWindow() {
     height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'renderer.js'),
-      nodeIntegration: false, // Important for security
+      nodeIntegration: false,
       contextIsolation: true,
       enableRemoteModule: false,
       webSecurity: false,
-      webviewTag: true, // Disable CSP restrictions
+      webviewTag: true,
     },
   })
 
-  // Load a default page, like Google, or your own custom HTML
-  //win.loadURL('https://www.google.com')
   win.loadFile('index.html')
 
-  // Open DevTools if you want to debug
-  // win.webContents.openDevTools()
-
-  
-win.webContents.on('did-fail-load', (event, errorCode, errorDescription, validatedURL) => {
-  console.error(`Failed to load ${validatedURL}: ${errorDescription} (Code: ${errorCode})`);
-});
+  win.webContents.on('did-fail-load', (event, errorCode, errorDescription, validatedURL) => {
+    console.error(`Failed to load ${validatedURL}: ${errorDescription} (Code: ${errorCode})`);
+  });
 }
 
 app.on('ready', createWindow)
